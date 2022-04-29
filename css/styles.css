@@ -1,0 +1,43 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: black;
+  text-align: center;
+  font-size: 4rem;
+}
+
+#title {
+  font-size: 4rem;
+}
+
+#board,
+.row,
+.grid {
+  display: flex;
+}
+
+#board {
+  flex-direction: column;
+}
+
+.row,
+.grid {
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  width: 10rem;
+  height: 10rem;
+}
+
+#middle div {
+  border-top: .2rem solid black;
+  border-bottom: .2rem solid black;
+}
+#two, #five, #eight {
+  border-left: .2rem solid black;
+  border-right: .2rem solid black;
+}
