@@ -17,9 +17,9 @@ const TicTacToe = {
         ]
     ],
     board: [
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0]
+        [null, null, null],
+        [null, null, null],
+        [null, null, null]
     ],
     init: function () {
         this.DOMElements.forEach((row, i) => row.forEach((column, j) => column.addEventListener('click', x => {
@@ -29,42 +29,56 @@ const TicTacToe = {
     },
     turn: 1,
     place: function (target, i, j) {
-        console.log(i, j);
         if (target.innerText === '') {
             let char;
             if (this.turn % 2 !== 0) {
                 char = 'X';
                 target.innerText = char;
-                this.board[i][j] = 1;
+                this.board[i][j] = char;
             } else {
                 char = 'O'
                 target.innerText = char;
-                this.board[i][j] = 2;
+                this.board[i][j] = char;
             }
 
-            this.checkWin(char) ? console.log('winner') : this.turn++;
+            if(this.turn < 10) {
+                this.checkWin(char) ? console.log('%cWINNER!!', 'color: green') : this.turn++;
+            }
         }
     },
     checkWin: function (char) {
-        console.log('%cChecking Win', 'color: yellow');
-
         if (this.turn > 4) {
-
-
-            // horizontal
-            board[0][0] && board[0][1] && board[0][2];
-            board[1][0] && board[1][1] && board[1][2];
-            board[2][0] && board[2][1] && board[2][2];
-
-            // vertical
-            board[0][0] && board[1][0] && board[2][0];
-            board[0][1] && board[1][1] && board[2][1];
-            board[0][2] && board[1][2] && board[2][2];
+            console.log('%cChecking Win...', 'color: yellow');
 
             // diagnols
-            board[0][0] && board[1][1] && board[2][2];
-            board[0][2] && board[1][1] && board[2][0];
+            if((this.board[0][0] === char && this.board[1][1]  === char && this.board[2][2] === char) ||(this.board[0][2] === char && this.board[1][1] === char && this.board[2][0] === char))
+                return true;
 
+            // horizontal checks
+            let win = this.board.some((row, i) => {
+                let found = !row.some((e, j) =>  e !== char);
+
+                return found;
+            })
+
+            if(win) return win;
+
+            // vertical checks
+            for(let i = 0; i < 3; i++) {
+                let match;
+                for(let j = 0; j < 3; j++) {
+                    match = this.board[j][i] === char;
+                    
+                    if(!match)
+                        break;
+                    else if(j === 2)
+                        return true;
+                }
+            }
+        }
+
+        if(this.turn === 9) {
+            console.log('TIE');
         }
 
         return false;
