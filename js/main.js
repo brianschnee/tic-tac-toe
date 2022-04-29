@@ -30,36 +30,40 @@ const TicTacToe = {
     turn: 1,
     place: function (target, i, j) {
         console.log(i, j);
-        if (target.innerText === '' && !this.checkWin()) {
+        if (target.innerText === '') {
+            let char;
             if (this.turn % 2 !== 0) {
-                target.innerText = 'X';
+                char = 'X';
+                target.innerText = char;
                 this.board[i][j] = 1;
             } else {
-                target.innerText = 'O';
+                char = 'O'
+                target.innerText = char;
                 this.board[i][j] = 2;
             }
 
-            this.turn++;
+            this.checkWin(char) ? console.log('winner') : this.turn++;
         }
     },
-    checkWin: function () {
+    checkWin: function (char) {
         console.log('%cChecking Win', 'color: yellow');
 
         if (this.turn > 4) {
 
-            // // horizontal
-            // board[0][0] && board[0][1] && board[0][2];
-            // board[1][0] && board[1][1] && board[1][2];
-            // board[2][0] && board[2][1] && board[2][2];
 
-            // // vertical
-            // board[0][0] && board[1][0] && board[2][0]
-            // board[0][1] && board[1][1] && board[2][1]
-            // board[0][2] && board[1][2] && board[2][2]
+            // horizontal
+            board[0][0] && board[0][1] && board[0][2];
+            board[1][0] && board[1][1] && board[1][2];
+            board[2][0] && board[2][1] && board[2][2];
 
-            // // diagnols
-            // board[0][0] && board[1][1] && board[2][2];
-            // board[0][2] && board[1][1] && board[2][0]
+            // vertical
+            board[0][0] && board[1][0] && board[2][0];
+            board[0][1] && board[1][1] && board[2][1];
+            board[0][2] && board[1][2] && board[2][2];
+
+            // diagnols
+            board[0][0] && board[1][1] && board[2][2];
+            board[0][2] && board[1][1] && board[2][0];
 
         }
 
