@@ -3,23 +3,30 @@ html {
 }
 
 body {
-  color: black;
   text-align: center;
-  font-size: 4rem;
+  font-size: 7rem;
+  background: #d9eeff;
+  color: #0b3454;
+  font-family: 'Space Mono', monospace;
 }
 
 #title {
-  font-size: 4rem;
+  font-weight: 700;
 }
 
-#board,
+#title,
+#reset {
+  font-size: 5rem;
+  margin: 3rem 0;
+}
+
 .row,
 .grid {
   display: flex;
 }
 
 #board {
-  flex-direction: column;
+  display: inline-block;
 }
 
 .row,
@@ -29,15 +36,23 @@ body {
 }
 
 .grid {
-  width: 10rem;
-  height: 10rem;
+  font-family: 'Radio Canada', sans-serif;
+  width: 15rem;
+  height: 15rem;
+  background: #1a659e;
+  margin: .3rem;
+  border-left: .8rem solid #004e89;
+  border-right: .8rem solid #0d4066;
+  border-bottom: .8rem solid #0b3454;
+  border-top: .8rem solid #2487d3;
 }
 
-#middle div {
-  border-top: .2rem solid black;
-  border-bottom: .2rem solid black;
+.grid:hover {
+  background: linear-gradient(135deg, #266ea5 10%, #0a4b7c 80%);
 }
-#two, #five, #eight {
-  border-left: .2rem solid black;
-  border-right: .2rem solid black;
+
+#reset {
+  display: block;
+  font-size: 3rem;
+  color: #ff6b35;
 }
