@@ -72,7 +72,6 @@ const TicTacToe = {
                     console.log('diagnol win')
                     return true;
                 }
-
             }
 
             // horizontal checks
@@ -85,7 +84,7 @@ const TicTacToe = {
             if(win) {
                 console.log('horizontal win')
                 return win
-            };
+            }
 
             // vertical checks
             for(let i = 0; i < 3; i++) {
@@ -97,6 +96,11 @@ const TicTacToe = {
                         break;
                     else if(j === 2) {
                         console.log('vertical win')
+
+                        this.DOMElements[0][i].style.background = '#0b3454';
+                        this.DOMElements[1][i].style.background = '#0b3454';
+                        this.DOMElements[2][i].style.background = '#0b3454';
+
                         return true;
                     }
                 }
@@ -122,6 +126,8 @@ const TicTacToe = {
 
         this.board.forEach((row, i) => row.forEach((column, j) => {
             this.board[i][j] = null;
+
+            this.DOMElements[i][j].style.background = '#1a659e';
         }));
 
         console.log(this.board);
@@ -129,6 +135,7 @@ const TicTacToe = {
         let title = document.getElementById('title')
         title.innerText = 'tic tac toe';
         title.style.fontFamily = 'Space Mono';
+
 
         console.log('%cGame has been Reset.', 'color: pink')
     }
