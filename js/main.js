@@ -68,8 +68,17 @@ const TicTacToe = {
 
             // diagnols
             if(this.board[1][1] === char) {
-                if((this.board[0][0] === char && this.board[2][2] === char) || (this.board[0][2] === char && this.board[2][0] === char)) {
-                    console.log('diagnol win')
+                if((this.board[0][0] === char && this.board[2][2] === char)) {
+                    this.DOMElements[0][0].style.color = 'yellow';
+                    this.DOMElements[1][1].style.color = 'yellow';
+                    this.DOMElements[2][2].style.color = 'yellow';
+                    console.log('diagnol win 1')
+                    return true;
+                } else if((this.board[0][2] === char && this.board[2][0] === char)) {
+                    this.DOMElements[0][2].style.color = 'yellow';
+                    this.DOMElements[1][1].style.color = 'yellow';
+                    this.DOMElements[2][0].style.color = 'yellow';
+                    console.log('diagnol win 2')
                     return true;
                 }
             }
