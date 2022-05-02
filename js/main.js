@@ -75,15 +75,21 @@ const TicTacToe = {
             }
 
             // horizontal checks
+            let location;
             let win = this.board.some((row, i) => {
-                let found = !row.some((e, j) =>  e !== char);
+                let found = !row.some(column =>  column !== char);
 
+                location = i;
                 return found;
             })
 
             if(win) {
-                console.log('horizontal win')
-                return win
+                console.log('horizontal win', location)
+
+                for (let i = 0; i < 3; i++)
+                    this.DOMElements[0][i].style.color = 'yellow';
+
+                return win;
             }
 
             // vertical checks
@@ -97,9 +103,8 @@ const TicTacToe = {
                     else if(j === 2) {
                         console.log('vertical win')
 
-                        this.DOMElements[0][i].style.background = '#0b3454';
-                        this.DOMElements[1][i].style.background = '#0b3454';
-                        this.DOMElements[2][i].style.background = '#0b3454';
+                        for(let k = 0; k < 3; k++)
+                            this.DOMElements[k][i].style.color = 'yellow';
 
                         return true;
                     }
@@ -126,8 +131,6 @@ const TicTacToe = {
 
         this.board.forEach((row, i) => row.forEach((column, j) => {
             this.board[i][j] = null;
-
-            this.DOMElements[i][j].style.background = '#1a659e';
         }));
 
         console.log(this.board);
