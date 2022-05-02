@@ -41,10 +41,10 @@ body {
   height: 15rem;
   background: #1a659e;
   margin: .3rem;
-  border-left: .8rem solid #004e89;
+  border-top: .8rem solid #2487d3;
   border-right: .8rem solid #0d4066;
   border-bottom: .8rem solid #0b3454;
-  border-top: .8rem solid #2487d3;
+  border-left: .8rem solid #004e89;
 }
 
 .grid:hover {
